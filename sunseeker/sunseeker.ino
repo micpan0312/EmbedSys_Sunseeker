@@ -14,15 +14,35 @@ void setup() {
   delay(1000);
 }
 void loop() {
-  // loop_compass();
   // totsTime = millis();
   // oldTime = totsTime;
+
+  // *****************************************************************************************
+  // Sunseeker starts moving w obstacle avoidance
+  // *****************************************************************************************
   // Self_Control();
-  Serial.println("\ncar done");
+  // Serial.println("\ncar done");
   // Serial.println(millis());
   // Serial.println(oldTime);
-  int dir = loop_compass();
-  Serial.println("Compass: "+ (String) dir + " degree");
+
+  // *****************************************************************************************
+  // Checking compass value
+  // *****************************************************************************************
+  // float dir = loop_compass();
+  // Serial.println("Compass: "+ (String) dir + " degree");
+  float dir_avg = 0.0;
+  for (int i = 0; i < 5; i++) {
+    float dir = loop_compass();
+    // Serial.println("Measurement " + (String) (i+1) + ": " + (String) dir + " degree");
+    dir_avg += dir;
+  }
+  Serial.println("Compass: " + (String) (dir_avg/5.0 )+ " degree");
+
+  // *****************************************************************************************
+  // Checking if under sunlight
+  // *****************************************************************************************
   float uv = loop_uv();
   Serial.println("UV: " + (String) uv);
+
+  Serial.println();
 }
