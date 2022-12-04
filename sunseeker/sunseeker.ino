@@ -2,13 +2,16 @@
 #include "avoid.h"
 #include "compass.h"
 #include "uv.h"
+#include "bluetooth.h"
 
 unsigned long totsTime;
 unsigned long oldTime;
 
 void setup() {
-  setup_avoid();
   Serial.begin(9600);  //initialized serial port , using Bluetooth as serial port, setting baud
+  setup_bluetooth();
+  setup_avoid();
+  // Serial.begin(9600);  //initialized serial port , using Bluetooth as serial port, setting baud
   stopp();             //stop
   setup_compass();
   delay(1000);
@@ -18,10 +21,16 @@ void loop() {
   // oldTime = totsTime;
 
   // *****************************************************************************************
+  // Bluetooth communication from user, input desired time window
+  // *****************************************************************************************
+  loop_bluetooth();
+  Serial.println("\nBluetooth done");
+
+  // *****************************************************************************************
   // Sunseeker starts moving w obstacle avoidance
   // *****************************************************************************************
-  // Self_Control();
-  // Serial.println("\ncar done");
+  Self_Control();
+  Serial.println("\ncar done");
   // Serial.println(millis());
   // Serial.println(oldTime);
 
