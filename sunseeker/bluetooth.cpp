@@ -179,7 +179,7 @@ void loop_bluetooth() {
   }
   Serial.println("test");
   if (timer < Care.substring((Care.indexOf("Timer") + 6)).toInt() + Care.substring((Care.indexOf("Time") + 5), (Care.indexOf("Timer"))).toInt()) {
-    timer = timer + 1000;
+    timer = timer + 15000;
     Serial.println(timer);
     if (timer > Care.substring((Care.indexOf("Time") + 5), (Care.indexOf("Timer"))).toInt()) {
       digitalWrite(Pin13, HIGH);
