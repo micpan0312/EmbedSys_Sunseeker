@@ -18,63 +18,48 @@ void setup() {
   setup_compass();
   delay(1000);
 }
-
 void loop() {
-  // *****************************************************************************************
-  // tx rx from master arduino (BT), check if arduno with BT send ON signal
-  // *****************************************************************************************
-  Value = digitalRead(Pin12);
-
-  // if True, bot starts
+  Value = digitalRead( Pin12 );
   if(Value){
-    // light on Pin13, indicating the bots working
-    digitalWrite(Pin13, HIGH);
-    // totsTime = millis();
-    // oldTime = totsTime;
+    digitalWrite(Pin13, HIGH );
+  // totsTime = millis();
+  // oldTime = totsTime;
 
-    // *****************************************************************************************
-    // receiving Serial data from Pi
-    // *****************************************************************************************
-    // if (Serial.available()) {
-    //   command = Serial.readStringUntil('\n');
-    //   command.trim(); 
+  // *****************************************************************************************
+  // Bluetooth communication from user, input desired time window
+  // *****************************************************************************************
 
-    //   if (command.equals("over 40")) {
-    //     digitalWrite(Pin13, HIGH);  
-    //   } else { 
-    //     digitalWrite(Pin13, LOW);   
-    //   }
-    // }
-  
-
-    // *****************************************************************************************
-    // Sunseeker starts moving w obstacle avoidance
-    // *****************************************************************************************
+  // *****************************************************************************************
+  // Sunseeker starts moving w obstacle avoidance
+  // *****************************************************************************************
     Self_Control();
     Serial.println("\ncar done");
-    // Serial.println(millis());
-    // Serial.println(oldTime);
+  // Serial.println(millis());
+  // Serial.println(oldTime);
 
-    // *****************************************************************************************
-    // Checking compass value
-    // *****************************************************************************************
-    // float dir = loop_compass();
-    // Serial.println("Compass: "+ (String) dir + " degree");
-    float angle_avg = loop_compass();
-    // Serial.println("Compass: " + (String) (angle_avg/5.0 )+ " degree");
-    Serial.println(angle_avg);
+  // *****************************************************************************************
+  // Checking compass value
+  // *****************************************************************************************
+  // float dir = loop_compass();
+  // Serial.println("Compass: "+ (String) dir + " degree");
+    float dir_avg = 0.0;
+    for (int i = 0; i < 1; i++) {
+      float dir = loop_compass();
+    // Serial.println("Measurement " + (String) (i+1) + ": " + (String) dir + " degree");
+      dir_avg += dir;
+    }
+    Serial.println("Compass: " + (String) (dir_avg/5.0 )+ " degree");
 
-
-
-    // *****************************************************************************************
-    // Checking if under sunlight
-    // *****************************************************************************************
+  // *****************************************************************************************
+  // Checking if under sunlight
+  // *****************************************************************************************
     float uv = loop_uv();
     Serial.println("UV: " + (String) uv);
 
     Serial.println();
   }
   else{
-      digitalWrite(Pin13, LOW);
+    digitalWrite(Pin13, LOW );
+    self_Control(Value);
   }
 }

@@ -12,6 +12,7 @@ void turnL();
 void stopp();
 void back();
 void Self_Control(void);
+void self_Control(int Value);
 int Ultrasonic_Ranging(unsigned char Mode);
 int ask_pin_L(unsigned char Mode);
 int ask_pin_R(unsigned char Mode);

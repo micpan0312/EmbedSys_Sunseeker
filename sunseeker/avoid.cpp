@@ -31,9 +31,57 @@ void Set_Speed(unsigned char Left, unsigned char Right)  //function of setting s
   analogWrite(Rpwm_pin, Right);
 }
 
+void advance()  //  going forward
+{
+  digitalWrite(pinRB, LOW);  // making motor move towards right rear
+  digitalWrite(pinRF, HIGH);
+  digitalWrite(pinLB, LOW);  // making motor move towards left rear
+  digitalWrite(pinLF, HIGH);
+  Car_state = 1;
+}
+
+void turnR()  //turning right(dual wheel)
+{
+  digitalWrite(pinRB, LOW);  //making motor move towards right rear
+  digitalWrite(pinRF, HIGH);
+  digitalWrite(pinLB, HIGH);
+  digitalWrite(pinLF, LOW);  //making motor move towards left front
+  Car_state = 4;
+}
+
+void turnL()  //turning left(dual wheel)
+{
+  digitalWrite(pinRB, HIGH);
+  digitalWrite(pinRF, LOW);  //making motor move towards right front
+  digitalWrite(pinLB, LOW);  //making motor move towards left rear
+  digitalWrite(pinLF, HIGH);
+  Car_state = 3;
+}
+
+void stopp()  //stop
+{
+  digitalWrite(pinRB, HIGH);
+  digitalWrite(pinRF, HIGH);
+  digitalWrite(pinLB, HIGH);
+  digitalWrite(pinLF, HIGH);
+  Car_state = 5;
+}
+
+void back()  //back up
+{
+  digitalWrite(pinRB, HIGH);  //making motor move towards right rear
+  digitalWrite(pinRF, LOW);
+  digitalWrite(pinLB, HIGH);  //making motor move towards left rear
+  digitalWrite(pinLF, LOW);
+  Car_state = 2;
+}
+
+
+
 void Self_Control(void)  //self-going, ultrasonic obstacle avoidance
 {
   int H;
+  int timer = 0;
   myservo.write(DuoJiao);
   H = Ultrasonic_Ranging(1);
   delay(300);
@@ -86,6 +134,16 @@ void Self_Control(void)  //self-going, ultrasonic obstacle avoidance
     }
   } else {
     advance();
+    timer++;
+    if(timer >= 2){
+      stopp();
+    }
+  }
+}
+void self_Control(int Value)  //self-going, ultrasonic obstacle avoidance
+{
+  if(Value == 0){
+      stopp();
   }
 }
 
@@ -140,54 +198,6 @@ int ask_pin_R(unsigned char Mode) {
     return Rdistance;
   } else return Rdistance;
 }
-
-//----------------------------------------------------------------
-// advance(), turnR(), turnL(), stopp(), back(), back()
-void advance()  //  going forward
-{
-  digitalWrite(pinRB, LOW);  // making motor move towards right rear
-  digitalWrite(pinRF, HIGH);
-  digitalWrite(pinLB, LOW);  // making motor move towards left rear
-  digitalWrite(pinLF, HIGH);
-  Car_state = 1;
-}
-
-void turnR()  //turning right(dual wheel)
-{
-  digitalWrite(pinRB, LOW);  //making motor move towards right rear
-  digitalWrite(pinRF, HIGH);
-  digitalWrite(pinLB, HIGH);
-  digitalWrite(pinLF, LOW);  //making motor move towards left front
-  Car_state = 4;
-}
-
-void turnL()  //turning left(dual wheel)
-{
-  digitalWrite(pinRB, HIGH);
-  digitalWrite(pinRF, LOW);  //making motor move towards right front
-  digitalWrite(pinLB, LOW);  //making motor move towards left rear
-  digitalWrite(pinLF, HIGH);
-  Car_state = 3;
-}
-
-void stopp()  //stop
-{
-  digitalWrite(pinRB, HIGH);
-  digitalWrite(pinRF, HIGH);
-  digitalWrite(pinLB, HIGH);
-  digitalWrite(pinLF, HIGH);
-  Car_state = 5;
-}
-
-void back()  //back up
-{
-  digitalWrite(pinRB, HIGH);  //making motor move towards right rear
-  digitalWrite(pinRF, LOW);
-  digitalWrite(pinLB, HIGH);  //making motor move towards left rear
-  digitalWrite(pinLF, LOW);
-  Car_state = 2;
-}
- //----------------------------------------------------------------
 
 void setup_avoid() {
   myservo.attach(A2);

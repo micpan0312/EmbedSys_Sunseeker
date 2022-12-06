@@ -44,18 +44,6 @@ void setup_compass() {
 
 // return the current degree to North in integer
 float loop_compass() {
-  float angle_avg = 0.0;
-
-  for (int i = 0; i < 5; i++) {
-    float angle = loop_compass();
-    // Serial.println("Measurement " + (String) (i+1) + ": " + (String) dir + " degree");
-    angle_avg += angle;
-  }
-
-  return angle_avg / 5.0;
-}
-
-float get_compass() {
   t = millis();
 
   float load;
@@ -82,10 +70,11 @@ float get_compass() {
   // Serial.print(load);
   // Serial.println("%");
 
-  delay(500);
-  
+  delay(1000);
   return bearing;
 }
+
+
 void compass_read_XYZdata() {
 
   Wire.beginTransmission(compass_address);
