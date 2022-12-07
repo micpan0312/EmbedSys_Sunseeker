@@ -5,6 +5,7 @@
 
 void setup_compass();
 float loop_compass();
+float get_compass();
 void compass_read_XYZdata();
 void compass_offset_calibration(int select);
 void compass_init(int gain);
