@@ -7,6 +7,10 @@
 unsigned long totsTime;
 unsigned long oldTime;
 int Value;
+float theta1, theta2, OriginAngle;
+int L1, L2, H1, H2, test_travel;
+float predictionDegrees[] = {0, 0, 0, 0, 0, 0};
+#height of the robot is 33 cm 
 
 void setup() {
   Serial.begin(9600);  //initialized serial port , using Bluetooth as serial port, setting baud
@@ -57,6 +61,11 @@ void loop() {
     Serial.println("UV: " + (String) uv);
 
     Serial.println();
+    
+//    theta1 = 0;
+//    theta2 = 0;
+//    L2 = sqrt(sq(L1) + sq(H2) - 2*L1*H1*cos((180.0 - theta1 - theta2)*(PI/180.0)));
+//    test_travel = distance * (1/3)
   }
   else{
     digitalWrite(Pin13, LOW );
