@@ -48,7 +48,7 @@ float loop_compass() {
   float round = 3.0;
 
     for (int i = 0; i < round; i++) {
-      float dir = loop_compass();
+      float dir = get_compass();
     // Serial.println("Measurement " + (String) (i+1) + ": " + (String) dir + " degree");
       dir_avg += dir;
     }

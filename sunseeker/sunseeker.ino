@@ -62,8 +62,8 @@ void loop() {
   // *****************************************************************************************
   // float dir = loop_compass();
   // Serial.println("Compass: "+ (String) dir + " degree");
-    loop_compass();
-    Serial.println("Compass: " + (String) (dir_avg/5.0 )+ " degree");
+    //loop_compass();
+    //Serial.println("Compass: " + (String) (dir_avg/5.0 )+ " degree");
 
   // *****************************************************************************************
   // Checking if under sunlight
