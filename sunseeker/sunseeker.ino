@@ -63,12 +63,7 @@ void loop() {
   // *****************************************************************************************
   // float dir = loop_compass();
   // Serial.println("Compass: "+ (String) dir + " degree");
-    float dir_avg = 0.0;
-    for (int i = 0; i < 1; i++) {
-      float dir = loop_compass();
-    // Serial.println("Measurement " + (String) (i+1) + ": " + (String) dir + " degree");
-      dir_avg += dir;
-    }
+    loop_compass();
     Serial.println("Compass: " + (String) (dir_avg/5.0 )+ " degree");
 
   // *****************************************************************************************
