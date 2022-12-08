@@ -43,7 +43,6 @@ void loop() {
         Serial.println("turning right");  
       }
       Serial.println("start ended");
-      start = false;
     }
   
   // totsTime = millis();
