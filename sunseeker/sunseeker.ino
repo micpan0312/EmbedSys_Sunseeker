@@ -7,10 +7,9 @@
 unsigned long totsTime;
 unsigned long oldTime;
 int Value;
-float theta1, theta2, OriginAngle;
-int L1, L2, H1, H2, test_travel;
-float predictionDegrees[] = {0, 0, 0, 0, 0, 0};
-//height of the robot is 33 cm 
+int distance = 2;
+int start = true;
+bool stopNow = false;
 
 void setup() {
   Serial.begin(9600);  //initialized serial port , using Bluetooth as serial port, setting baud
@@ -24,20 +23,38 @@ void setup() {
 }
 void loop() {
   Value = digitalRead( Pin12 );
+  if(stopNow == true){
+    Value = 0;
+  }
   if(Value){
+  // *****************************************************************************************
+  // Bluetooth communication result from user, input desired time window
+  // *****************************************************************************************
+
     digitalWrite(Pin13, HIGH );
+    
+  // *****************************************************************************************
+  // inital search for windows
+  // *****************************************************************************************
+    if(start){
+      Serial.println("started");
+      for(int times = 0; times < 1000; times++){
+        turnR();
+        Serial.println("turning right");  
+      }
+      Serial.println("start ended");
+      start = false;
+    }
+  
   // totsTime = millis();
   // oldTime = totsTime;
 
   // *****************************************************************************************
-  // Bluetooth communication from user, input desired time window
-  // *****************************************************************************************
-
-  // *****************************************************************************************
   // Sunseeker starts moving w obstacle avoidance
   // *****************************************************************************************
-    Self_Control();
-    Serial.println("\ncar done");
+  
+//    Self_Control();
+//    Serial.println("\ncar done");
   // Serial.println(millis());
   // Serial.println(oldTime);
 
@@ -57,21 +74,18 @@ void loop() {
   // *****************************************************************************************
   // Checking if under sunlight
   // *****************************************************************************************
+    
     float uv = loop_uv();
     Serial.println("UV: " + (String) uv);
-
-    Serial.println();
     if(uv > 0.00){
         stopp();
+        stopNow = true;
     }
-    
-//    theta1 = 0;
-//    theta2 = 0;
-//    L2 = sqrt(sq(L1) + sq(H2) - 2*L1*H1*cos((180.0 - theta1 - theta2)*(PI/180.0)));
-//    test_travel = distance * (1/3)
+    Serial.println();
   }
   else{
     digitalWrite(Pin13, LOW );
     self_Control(Value);
+    //Serial.println("time");
   }
 }
