@@ -10,7 +10,7 @@ int Value;
 float theta1, theta2, OriginAngle;
 int L1, L2, H1, H2, test_travel;
 float predictionDegrees[] = {0, 0, 0, 0, 0, 0};
-#height of the robot is 33 cm 
+//height of the robot is 33 cm 
 
 void setup() {
   Serial.begin(9600);  //initialized serial port , using Bluetooth as serial port, setting baud
@@ -61,6 +61,9 @@ void loop() {
     Serial.println("UV: " + (String) uv);
 
     Serial.println();
+    if(uv > 0.00){
+        stopp();
+    }
     
 //    theta1 = 0;
 //    theta2 = 0;
