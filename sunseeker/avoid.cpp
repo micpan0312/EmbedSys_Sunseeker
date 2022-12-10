@@ -9,8 +9,8 @@ int pinLB = 2;                 //pin of controlling turning---- IN1 of motor dri
 int pinLF = 4;                 //pin of controlling turning---- IN2 of motor driver board
 int pinRB = 7;                 //pin of controlling turning---- IN3 of motor driver board
 int pinRF = 8;                 //pin of controlling turning---- IN4 of motor driver board
-unsigned char Lpwm_val = 150;  //initialized left wheel speed at 250
-unsigned char Rpwm_val = 195;  //initialized right wheel speed at 250
+unsigned char Lpwm_val = 230;  //initialized left wheel speed at 250
+unsigned char Rpwm_val = 220;  //initialized right wheel speed at 250
 int Car_state = 0;             //the working state of car
 int myangle;                   //defining variable of angle
 int pulsewidth;                //defining variable of pulse width
