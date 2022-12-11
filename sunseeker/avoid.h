@@ -11,6 +11,7 @@ void turnR();
 void turnL();
 void stopp();
 void back();
+void rotate();
 void Self_Control(void);
 void self_Control(int Value);
 int Ultrasonic_Ranging(unsigned char Mode);

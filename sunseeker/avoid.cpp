@@ -1,4 +1,5 @@
 #include "avoid.h"
+#include "compass.h"
 
 Servo myservo;
 int inputPin = A0;             // ultrasonic module   ECHO to A0
@@ -76,7 +77,12 @@ void back()  //back up
   Car_state = 2;
 }
 
-
+void rotate() {
+  digitalWrite(pinRB, HIGH);  //making motor move towards right rear
+  digitalWrite(pinRF, LOW);
+  digitalWrite(pinLB, LOW);  //making motor move towards left rear
+  digitalWrite(pinLF, HIGH);
+}
 
 void Self_Control(void)  //self-going, ultrasonic obstacle avoidance
 {

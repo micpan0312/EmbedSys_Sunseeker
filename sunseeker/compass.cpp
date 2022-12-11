@@ -47,16 +47,16 @@ float loop_compass() {
   float dir_avg = 0.0;
   float round = 3.0;
 
-    for (int i = 0; i < round; i++) {
-      float dir = get_compass();
+  for (int i = 0; i < round; i++) {
+    float dir = get_compass();
     // Serial.println("Measurement " + (String) (i+1) + ": " + (String) dir + " degree");
-      dir_avg += dir;
-    }
+    dir_avg += dir;
+  }
 
-    return dir_avg / round;
+  return dir_avg / round;
 }
 
-float get_comapss() {
+float get_compass() {
   t = millis();
 
   float load;
