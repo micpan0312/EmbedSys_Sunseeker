@@ -36,6 +36,23 @@ After indoor time increases, people’s love for houseplants has blossomed, and 
 
 # 3. Technical Approach
 
+Hardware resources:
+-	Compass: HiLetgo GY-511 LSM303DLHC
+-	UV sensor: Adafruit 1918
+-	Thermal camera: MLX90640 IR Array Thermal Imaging Camera 
+-	Intel RealSense: Depth Cam
+-	UltraSonic: HC-SR04
+-	Motor Driver: L298N
+-	Bluetooth: HC-06
+-	Arduino: Arduino Uno
+-	Other auxiliary parts (wires, breadboards, etc.)
+Software resources:
+-	Arduino IDE
+-	MIT App inventor
+-	RealSense Viewer
+-	Raspberry Pi
+-	Yolov5
+
 ## Sunlight Spot Prediction function
 * **Window detection:** In order to locate where the sunlight lands on the floor in the room, we need to know where the sun is coming from and hence a search of windows in the robot’s surroundings would be of paramount importance in the first step of sunlight spot prediction. Utilizing Yolov5, You Only Look Once, a single-stage object detection algorithm that provides high inference speeds (see figure 1), our Sunseeker was now equipped with computer vision but without the classification of ‘windows’. A sequence of training our own dataset was consequently deployed. As the result turned out, however, our trained model with only window data could sometimes end with misjudgment of anything in the shape of square or rectangle. Merging the pre-existing model with our trained window model showed the best result of all, especially using largest model of the YOLOv5 family, YOLOv5l, with 46.5 million parameters, did the fused model show the best identification result as now even small object detection was feasible and that could distinguish windows to stand out from any other objects in the robot’s vision (see figure 2).
 
