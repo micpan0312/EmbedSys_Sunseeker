@@ -46,6 +46,7 @@ Hardware resources:
 -	Bluetooth: HC-06
 -	Arduino: Arduino Uno
 -	Other auxiliary parts (wires, breadboards, etc.)
+
 Software resources:
 -	Arduino IDE
 -	MIT App inventor
