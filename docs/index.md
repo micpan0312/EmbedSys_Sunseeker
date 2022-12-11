@@ -6,7 +6,6 @@ After indoor time increases, people’s love for houseplants has blossomed, and 
 
 * Michael Pan
 * Christopher Hwang
-* Name of team member \#3 (delete this if necessary)
 
 # Required Submissions
 
