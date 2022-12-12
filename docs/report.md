@@ -34,6 +34,8 @@ After indoor time increases, people’s love for houseplants has blossomed, and 
 
 # 2. Related Work
 
+Human Following of Mobile Robot: In this Article, the robot uses computer vision and a constant loop of image searching for the subject. In our work, we would like to loop searching for the window and move to the distance where the sunlight would be. The robot loop would include the camera sensor, which also checks the frame per second when the object is detected. The algorithm pattern and computer vision is what we used for our project.
+
 # 3. Technical Approach
 
 Hardware resources:
