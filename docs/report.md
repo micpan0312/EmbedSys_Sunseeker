@@ -140,9 +140,9 @@ The sunlight trajectory prediction is to predict the angle of the sunlight movem
 ## Bot Design:
 The top box is 7 cm by 19.5 cm by 22.5 cm. The bottom pillars below the box are 7.5 cm tall. The camera is set in the front with the batteries and Raspberry Pi. The back where the breadboard with the UV light sensor and compass and bluetooth are aligned with the plant as shown in the figure below.
 <p align="center">
-  <img src="media/_com.apple.Pasteboard.8FNgoM.png" width="450" />
-  <img src="media/Sunseeker_Image.png" width="450" />
-  <img src="media/sunseeker_top_side_view.png" width="450" />
+  <img src="media/_com.apple.Pasteboard.8FNgoM.png" width="300" />
+<!--   <img src="media/Sunseeker_Image.png" width="450" />
+  <img src="media/sunseeker_top_side_view.png" width="450" /> -->
 </p>
 
 # 4. Evaluation and Results
