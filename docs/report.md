@@ -49,7 +49,7 @@ Hardware resources:
 Software resources:
 -	Arduino IDE
 -	MIT App inventor
--	Librealsense [7],[13]
+-	Librealsense [7][13]
 -	PyTorch [11]
 -	OpenCV
 -	Raspberry Pi [7]
