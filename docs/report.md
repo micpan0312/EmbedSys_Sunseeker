@@ -1,3 +1,5 @@
+Disclaimer: The project is not fully functional. The camera does not work with the rest of the robot because the L515 does not work in a strong amount of sunlight and the prediction of the sunlight trajectory prediction function is not working.
+
 # Table of Contents
 * Abstract
 * [Introduction](#1-introduction)
