@@ -52,3 +52,5 @@ We will be installing Raspberry Pi OS, UBUNTU, or UBUNTU Mate onto our Raspberry
 [2] “Object Detection with yolov5 and Pytorch.” Section, https://www.section.io/engineering-education/object-detection-with-yolov5-and-pytorch/
 
 [3] Ferraro, Kathleen. “How Gardening Became a Wellness Practice among Millennials.” Bustle, Bustle, 21 June 2021, https://www.bustle.com/wellness/gardening-wellness-trend-millennial-self-care-benefits.
+
+[4] PlantWhisperer. “Best Tech Gadgets for Indoor Plant Lovers.” PlantMaid, 10 Dec. 2022, https://www.plantmaid.com/best-tech-gadgets-for-indoor-plant-lovers/.  
