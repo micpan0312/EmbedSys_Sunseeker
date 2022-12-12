@@ -35,7 +35,9 @@ We will be downloading, installing and setting up the development environment fo
 
 ### 9.a. Papers
 
-List the key papers that you have identified relating to your project idea, and describe how they related to your project. Provide references (with full citation in the References section below).
+In this article "Human Following of Mobile Robot [5]", the robot uses computer vision and a constant loop of image searching for the subject. In our work, we would like to loop searching for the window and move to the distance where the sunlight would be. The robot loop would include the camera sensor, which also checks the frame per second when the object is detected. The algorithm pattern and computer vision is what we used for our project.
+
+We sought inspiration and motivation in this next paper “Smart Plant Pot [6].”. In this research, the authors were trying to develop a smart automated system that helped plants with their growing conditions by monitoring their soil moisture, temperature, and sunlight. When any of the metrics fell under the required threshold, it would automatically warn the user and suggest corresponding actions. We noticed that, even though it had an automatic watering and cooling mechanism, the sunlight requirement still was limited to human intervention or replaced with an artificial light. Research has pointed out sunlight is still generally considered more preferable and beneficial for plant growth than artificial light [7]. Hence, we were inspired and motivated to look into the possible approaches and solutions.
 
 ### 9.b. Datasets
 
@@ -54,3 +56,10 @@ We will be installing Raspberry Pi OS, UBUNTU, or UBUNTU Mate onto our Raspberry
 [3] Ferraro, Kathleen. “How Gardening Became a Wellness Practice among Millennials.” Bustle, Bustle, 21 June 2021, https://www.bustle.com/wellness/gardening-wellness-trend-millennial-self-care-benefits.
 
 [4] PlantWhisperer. “Best Tech Gadgets for Indoor Plant Lovers.” PlantMaid, 10 Dec. 2022, https://www.plantmaid.com/best-tech-gadgets-for-indoor-plant-lovers/.  
+
+[5] Algabri, Redhwan, and Mun-Taek Choi. “Deep-Learning-Based Indoor Human Following of Mobile Robot Using Color Feature.” Sensors (Basel, Switzerland), U.S. National Library of Medicine, 9 May 2020, https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7273221/.  
+
+[6] Kurdeya, Ola, Hadeel Salamin, and Israa Bet-rashed. "Smart plant pot." (2015).
+
+[7] “Do Plants Grow as Well under Artificial Light?” EarthSky, 4 Nov. 2022, https://earthsky.org/human-world/artificial-light-plant-growth/. 
+
