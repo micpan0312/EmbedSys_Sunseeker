@@ -105,7 +105,7 @@ Software resources:
 
 <p align="center">
 <!--   <img src="media/known_var.png" width="530" height="334"/> -->
-  <img src="media/known_var.png" />
+  <img src="media/known_var.png"  width="450"/>
 </p>
 <p align="center">
   Table 1: A list of the known variables before sunlight prediction 
@@ -113,7 +113,7 @@ Software resources:
 
 <p align="center">
 <!--   <img src="media/unknown_var.png" height="330"  /> -->
-  <img src="media/unknown_var.png" />
+  <img src="media/unknown_var.png"  width="450"/>
 </p>
 <p align="center">
   Table 2: A list of the unknown and the solving approach 
