@@ -12,4 +12,4 @@ After indoor time increases, people’s love for houseplants has blossomed, and 
 * [Proposal](proposal)
 * [Midterm Checkpoint Presentation Slides](http://)
 * [Final Presentation Slides](https://docs.google.com/presentation/d/1yRFuW0j9LKBWD2kcvjMXTOqfWXzyr_h1eJJQ6VnooOo/edit#slide=id.g1ae0be02b0a_2_0)
-* [Final Report](report)
+* [Final Report](https://github.com/micpan0312/EmbedSys_Sunseeker/blob/master/docs/report.md)
