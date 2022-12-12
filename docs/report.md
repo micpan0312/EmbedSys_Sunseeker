@@ -115,7 +115,7 @@ The Bluetooth app for the android phone is written by the MIT app inventor devel
   <img src="media/Bluetooth App Screen.jpg" width="200" />
 </p>
 <p align="center">
-  Figure 6: input UI on Android phone for the bluetooth communication with Arduino Uno
+  Figure 6: Input UI on Android phone for the bluetooth communication with Arduino Uno
 </p>
 
 
@@ -140,9 +140,12 @@ The sunlight trajectory prediction is to predict the angle of the sunlight movem
 ## Bot Design:
 The top box is 7 cm by 19.5 cm by 22.5 cm. The bottom pillars below the box are 7.5 cm tall. The camera is set in the front with the batteries and Raspberry Pi. The back where the breadboard with the UV light sensor and compass and bluetooth are aligned with the plant as shown in the figure below.
 <p align="center">
-  <img src="media/_com.apple.Pasteboard.8FNgoM.png" width="300" />
+  <img src="media/_com.apple.Pasteboard.8FNgoM.png" width="350" />
 <!--   <img src="media/Sunseeker_Image.png" width="450" />
   <img src="media/sunseeker_top_side_view.png" width="450" /> -->
+</p>
+<p align="center">
+  Figure 9: Sunseeker top angle view 
 </p>
 
 # 4. Evaluation and Results
@@ -177,5 +180,13 @@ In this video, Bluetooth communication between the user’s Android App and the 
 
 
 # 5. Discussion and Conclusions
+
+The report presents the sunseeker robot, which is designed to have a mobile plant robot that would lead to the best sunlight place and update to the next best spot in the cycle of time. The robot uses the camera to find the window location and UV light sensor to identify the sunlight. Using the Arduino and Raspberry Pi, The Raspberry Pi is used to get the distance from the closest window detected and send in the distance as a String message. The two Arduino Uno would receive the timer from the phone app and activate the UV light module, compass module and sunseeker’s motors.
+
+As mentioned in the disclaimer, the robot is not fully functional because the camera is required to work in the condition where the sunlight is minimal. The use of the inferred in the camera would get interrupted with the sunlight that shines into the room. This issue would not allow the trigonometry calculation to find the ideal spot that is required for the robot to find the spot. The robot also has a relatively slow speed when traveling around the room due to the weight of the added modules in the robot. The full combined weight of the robot is around 2 kg. There are battery management limitations. The battery use for the robot is limited for a couple days since the 4 DC motors are powered with two 4.2 Volt lithium batteries. 
+There is a limitation of the amount of memory that can be used within the Arduino and since we have the robot set in a certain. We set a specific array size to 4 elements since we used that number to test since it is a small enough number to keep track of the test we had. If we had more time to work on the sun seeker robot, we would be able to test for a larger amount of elements in the array.
+
+There are plans to optimize use of a camera that is able to handle a stronger level of sunlight. 
+
 
 # 6. References
