@@ -37,8 +37,7 @@ After indoor time increases, people’s love for houseplants has blossomed, and 
 Hardware resources:
 -	Compass: HiLetgo GY-511 LSM303DLHC
 -	UV sensor: Adafruit 1918
--	Thermal camera: MLX90640 IR Array Thermal Imaging Camera 
--	Intel RealSense: Depth Cam
+-	Depth Cam: Intel RealSense L515
 -	UltraSonic: HC-SR04
 -	Motor Driver: L298N
 -	Bluetooth: HC-06
@@ -48,20 +47,65 @@ Hardware resources:
 Software resources:
 -	Arduino IDE
 -	MIT App inventor
--	RealSense Viewer
+-	Librealsense
+-	PyTorch
 -	Raspberry Pi
 -	Yolov5
 
 ## Sunlight Spot Prediction function
 * **Window detection:** In order to locate where the sunlight lands on the floor in the room, we need to know where the sun is coming from and hence a search of windows in the robot’s surroundings would be of paramount importance in the first step of sunlight spot prediction. Utilizing Yolov5, You Only Look Once, a single-stage object detection algorithm that provides high inference speeds (see figure 1), our Sunseeker was now equipped with computer vision but without the classification of ‘windows’. A sequence of training our own dataset was consequently deployed. As the result turned out, however, our trained model with only window data could sometimes end with misjudgment of anything in the shape of square or rectangle. Merging the pre-existing model with our trained window model showed the best result of all, especially using largest model of the YOLOv5 family, YOLOv5l, with 46.5 million parameters, did the fused model show the best identification result as now even small object detection was feasible and that could distinguish windows to stand out from any other objects in the robot’s vision (see figure 2).
 
+<p align="center">
+  <img src="media/object_id.png" width="600" />
+</p>
+<p align="center">
+  Figure1: Yolov5 identifies objects with high accuracy (number represents confidence)
+</p>
+
+<p align="center">
+  <img src="media/win_model_train.png" width="750" />
+</p>
+<p align="center">
+  Figure 2: Custom train detection model with Yolov5
+</p>
+
 * **Distance Measurement:** Now that our Sunseeker had window identification, what was missing here was the distance between the robot and the window so that we could further predict where the sunlight would land. This was when Intel RealSense L515 came in. RealSense L515 is a LiDAR depth camera that emits a laser and has it bounce back to measure the distance from whatever the vision of the camera is at the moment. It has a consistent high accuracy of 0.25 to 9 meters in range, which provides sufficient range for what the Sunseeker would generally need for indoor measurements. 
+
+<p align="center">
+  <img src="media/realsense-view_ex.png" width="600" />
+</p>
+<p align="center">
+  Figure 3: RealSense Viewer showing depth in meters, different gradient of colors indicates different distances
+</p>
 
 * **Combine Object Detection and Distance Measurement:** With both the object identification and distance measurement in place, objects in the robot’s vision would be boxed and detected; at the same time, the coordinates of the four corners of the object would be marked to measure the depth from RealSense to that of the center. In figure 4, it is clearly shown that objects on the desk are detected with the correct identification with precise distance measurements, even the toilet further away in the background is as well recognized and measured in distance. A serial communication between the Raspberry Pi and Arduino is essential to receive window requests and transmit the processed distance from and to one another. Two outputs would be transmitted for our final step of determining the location of the sun, which will be explained in details in the next section: first, the distance from the RealSense depth camera to the center of the window, and second, the absolute distance from the camera to the window. 
 
-* **Distance Data Processed and Sunlight location Predicted:** Details in calculation and prediction of where the sun would land on the floor are illustrated in details in figure 5. After windows are identified and their respective distances measured, the Sunseeker is just one step away from getting to the sunlight spot: the relative angle of the location and the relative distance from the bot to the spot. Before getting started, clarification of what are known and unknown are listed in table 1 below: 
+<p align="center">
+  <img src="media/object_id&dist.png" width="600" />
+</p>
+<p align="center">
+  Figure 4: Yolov5 combined with RealSense outputting identified objects with distance respectively 
+</p>
 
-First of all, 𝜽2 can be attained by   𝜽2=cos-1(d3d1). With 𝜽2, d4 = d1 * sin(𝜽2). d5 would just be the sum of d4 and the camera height off of the ground d5=d2 + d4. d6  , the absolute distance from the predicted sunlight spot to window can then be calculated as d6= d5  / tan(𝜽3). 𝜽5 = 180- 𝜽1-𝜽4. Finally, we can derive d7, the distance the robot needs to move from the current spot to the desired destination, from Law of Cosines d7= d32+d62-2d3d6cos(𝜽5) . Same applies to the degrees 𝜽6 the robot needs to rotate before heading straight to the sunlight spot, 𝜽6=cos-1(d62-d52-d722d52d72). Now the bot just need to rotate 𝜽6 degrees and go straight forward by d7 meters and the sunlight spot search would be complete.
+* **Distance Data Processed and Sunlight location Predicted:** Details in calculation and prediction of where the sun would land on the floor are illustrated in details in figure 5. After windows are identified and their respective distances measured, the Sunseeker is just one step away from getting to the sunlight spot: the relative angle of the location and the relative distance from the bot to the spot. Before getting started, clarification of what are known and unknown are listed in table 1 below. For simplicity, discussion over calculation and trigonometry would be omitted here; instead, they are shown directly in table 2 below as of how the derivation of the final destination distance d7 and relative rotation angle of the robot 𝜽6. After prediction, now the bot just needs to rotate 𝜽6 degrees and go straight forward by d7 meters and the sunlight spot search would be complete.
+
+<p align="center">
+  <img src="media/sunlight_search_diag.jpeg" width="600" />
+</p>
+<p align="center">
+  Figure 5: Details on the derivation of the sunlight location 
+</p>
+
+<p align="center">
+  <img src="media/known_var.png" width="530" height="334"/>
+  <img src="media/unknown_var.png" height="330"  />
+</p>
+<p align="center">
+  Table 1: A list of the known variables before sunlight prediction 
+  $~~~~~~~~~~~~~$  
+  Table 2: A list of the unknown and the solving approach 
+</p>
+
 
 ## Bluetooth Module
 The Bluetooth app for the android phone is written by the MIT app inventor developer. The App inventor uses a scratch program. The MIT app inventor has a builtin bluetooth client that would allow to send a message. In this project, we would be using a String message to send a message to the bluetooth device on the robot. The robot uses the arduino HC-06 module to receive the String message. The String message includes the time the message is sent, the start time for the robot, and the time duration for the robot to run all the subroutines. The time the message sent would tell the arduino what the current time is and that is the start time of the arduino count down. The start time for the robot is the time when the rest of the robot needs to activate all the other modules like the Camera, UV sensor, and Compass. The other modules are activated using GPIO input from one arduino with the bluetooth to the other arduino connected to the rest of the other modules since the first arduino is occupied with the RX and TX for the bluetooth and the Camera’s Raspberry pi uses the RX and TX for communication [3]. Once the internal timer counts up to the end time, which is the duration time added to the start time, the robot will stop running all the other modules. All the inputs are shown in the figure below.
