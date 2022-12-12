@@ -1,5 +1,5 @@
 # ecem202a_project: Sunseeker
-[website] (https://micpan0312.github.io/EmbedSys_Sunseeker/)
+* Click here for [website] (https://micpan0312.github.io/EmbedSys_Sunseeker/)
 ## Team
 * Michael Pan
 * Christopher Hwang
