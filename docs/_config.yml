@@ -1,8 +1,10 @@
-theme: jekyll-theme-modernist
+# theme: jekyll-theme-modernist
+theme: jekyll-theme-minimal
 show_downloads: true
 
 # google_analytics:[Your Google Analytics tracking ID]
 
 # Name of website
 title: Sunseeker–A Self-care Bot for Houseplant
+logo: /media/_com.apple.Pasteboard.8FNgoM.png
 description: Project for UCLA ECEM202A/CSM213A (Fall 2022)
