@@ -47,4 +47,8 @@ We will be installing Raspberry Pi OS, UBUNTU, or UBUNTU Mate onto our Raspberry
 
 ## 10. References
 
-List references correspondign to citations in your text above. For papers please include full citation and URL. For datasets and software include name and URL.
+[1] Ed. “Raspberry Pi Arduino Serial Communication - Everything You Need to Know - the Robotics Back.” End, 15 Nov. 2021, https://roboticsbackend.com/raspberry-pi-arduino-serial-communication/
+
+[2] “Object Detection with yolov5 and Pytorch.” Section, https://www.section.io/engineering-education/object-detection-with-yolov5-and-pytorch/
+
+[3] Ferraro, Kathleen. “How Gardening Became a Wellness Practice among Millennials.” Bustle, Bustle, 21 June 2021, https://www.bustle.com/wellness/gardening-wellness-trend-millennial-self-care-benefits.
