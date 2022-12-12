@@ -15,7 +15,7 @@ After indoor time increases, people’s love for houseplants has blossomed, and 
 
 # 1. Introduction
 
-* **Motivation & Objective:** When COVID-19 forced lockdowns and stay-at-home orders, some people adopted a pet and some adopted a plant. Plants have a scientifically supported healing effect with gardening a few times a week being associated with higher levels of perceived well-being, lower stress and increased physical activity [ref]. As a result, the popularity in indoor gardening has surged ever since. However, that was during the lockdowns and work-from-home was set to be the new normal, and hence people spent most of their time home, able to take care of their beloved plants most of if not all times. Now, with the coronavirus dying down and most companies returning to on-site working environments, most houseplants however are now left unattended. Even though auto watering devices or plant growth condition monitors exist in the market, little does a device have the functionality that proactively seeks sunlight indoors and autonomously takes the houseplant to bathe under it. In this project, we are inspired to develop and build a self-care houseplant robot that will change houseplant care. Instead of requiring human’s attention and care, now with our Sunseeker, it is capable of taking care of itself by looking for sunlight during the time when the owner is unavailable. 
+* **Motivation & Objective:** When COVID-19 forced lockdowns and stay-at-home orders, some people adopted a pet and some adopted a plant. Plants have a scientifically supported healing effect with gardening a few times a week being associated with higher levels of perceived well-being, lower stress and increased physical activity [8]. As a result, the popularity in indoor gardening has surged ever since. However, that was during the lockdowns and work-from-home was set to be the new normal, and hence people spent most of their time home, able to take care of their beloved plants most of if not all times. Now, with the coronavirus dying down and most companies returning to on-site working environments, most houseplants however are now left unattended. Even though auto watering devices or plant growth condition monitors exist in the market, little does a device have the functionality that proactively seeks sunlight indoors and autonomously takes the houseplant to bathe under it. In this project, we are inspired to develop and build a self-care houseplant robot that will change houseplant care. Instead of requiring human’s attention and care, now with our Sunseeker, it is capable of taking care of itself by looking for sunlight during the time when the owner is unavailable. 
 
 * **State of the Art & Its Limitations:** Similar existing products that aid houseplant care nowadays mainly focus on auto watering, soil moisture, and light intensity monitoring with the need of the owner stepping in. 
 
@@ -37,7 +37,7 @@ After indoor time increases, people’s love for houseplants has blossomed, and 
 # 3. Technical Approach
 
 Hardware resources:
--	Compass: HiLetgo GY-511 LSM303DLHC
+-	Compass: HiLetgo GY-511 LSM303DLHC [9]
 -	UV sensor: Adafruit 1918
 -	Depth Cam: Intel RealSense L515
 -	UltraSonic: HC-SR04
@@ -49,14 +49,14 @@ Hardware resources:
 Software resources:
 -	Arduino IDE
 -	MIT App inventor
--	Librealsense
--	PyTorch
+-	Librealsense [7],[13]
+-	PyTorch [11]
 -	OpenCV
--	Raspberry Pi
+-	Raspberry Pi [7]
 -	Yolov5
 
 ## Sunlight Spot Prediction function
-* **Window detection:** In order to locate where the sunlight lands on the floor in the room, we need to know where the sun is coming from and hence a search of windows in the robot’s surroundings would be of paramount importance in the first step of sunlight spot prediction. Utilizing Yolov5, You Only Look Once, a single-stage object detection algorithm that provides high inference speeds (see figure 1), our Sunseeker was now equipped with computer vision but without the classification of ‘windows’. A sequence of training our own dataset was consequently deployed. As the result turned out, however, our trained model with only window data could sometimes end with misjudgment of anything in the shape of square or rectangle. Merging the pre-existing model with our trained window model showed the best result of all, especially using largest model of the YOLOv5 family, YOLOv5l, with 46.5 million parameters, did the fused model show the best identification result as now even small object detection was feasible and that could distinguish windows to stand out from any other objects in the robot’s vision (see figure 2).
+* **Window detection:** In order to locate where the sunlight lands on the floor in the room, we need to know where the sun is coming from and hence a search of windows in the robot’s surroundings would be of paramount importance in the first step of sunlight spot prediction. Utilizing Yolov5, You Only Look Once, a single-stage object detection algorithm that provides high inference speeds (see figure 1), our Sunseeker was now equipped with computer vision but without the classification of ‘windows’ [12]. A sequence of training our own dataset was consequently deployed. As the result turned out, however, our trained model with only window data could sometimes end with misjudgment of anything in the shape of square or rectangle. Merging the pre-existing model with our trained window model showed the best result of all, especially using largest model of the YOLOv5 family, YOLOv5l, with 46.5 million parameters, did the fused model show the best identification result as now even small object detection was feasible and that could distinguish windows to stand out from any other objects in the robot’s vision (see figure 2).
 
 <p align="center">
   <img src="media/object_id.png" width="450" />
@@ -81,7 +81,7 @@ Software resources:
   Figure 3: RealSense Viewer showing depth in meters, different gradient of colors indicates different distances
 </p>
 
-* **Combine Object Detection and Distance Measurement:** With both the object identification and distance measurement in place, objects in the robot’s vision would be boxed and detected; at the same time, the coordinates of the four corners of the object would be marked to measure the depth from RealSense to that of the center. In figure 4, it is clearly shown that objects on the desk are detected with the correct identification with precise distance measurements, even the toilet further away in the background is as well recognized and measured in distance. A serial communication between the Raspberry Pi and Arduino is essential to receive window requests and transmit the processed distance from and to one another. Two outputs would be transmitted for our final step of determining the location of the sun, which will be explained in details in the next section: first, the distance from the RealSense depth camera to the center of the window, and second, the absolute distance from the camera to the window. 
+* **Combine Object Detection and Distance Measurement:** With both the object identification and distance measurement in place, objects in the robot’s vision would be boxed and detected; at the same time, the coordinates of the four corners of the object would be marked to measure the depth from RealSense to that of the center. In figure 4, it is clearly shown that objects on the desk are detected with the correct identification with precise distance measurements, even the toilet further away in the background is as well recognized and measured in distance [10]. A serial communication between the Raspberry Pi and Arduino is essential to receive window requests and transmit the processed distance from and to one another. Two outputs would be transmitted for our final step of determining the location of the sun, which will be explained in details in the next section: first, the distance from the RealSense depth camera to the center of the window, and second, the absolute distance from the camera to the window. 
 
 <p align="center">
   <img src="media/object_id&dist.png" width="450" />
@@ -96,7 +96,7 @@ Software resources:
   <img src="media/sunlight_search_diag.jpeg" width="600" />
 </p>
 <p align="center">
-  Figure 5: Details on the derivation of the sunlight location 
+  Figure 5: Details on the derivation of the sunlight location [6]
 </p>
 
 <p align="center">
@@ -196,7 +196,7 @@ There is a limitation of the amount of memory that can be used within the Arduin
 Due to the development time limitation, we did not build our Android app to the fullest. The bluetooth App is limited to single day inputs with single segmented times. Hence, if the user would not be home for over a day, it will be implausible for them to schedule a proper time frame for the robot to work. 
 
 ## Future Work
-As we did some research after realizing the limitation of RealSense L515 at the very late stage of development, ideally, we would instead need to use a camera that can handle strong sunlight, specifically RealSense 400 Series stereo depth cameras, which actually work excellently in both indoor and outdoor sunlight.
+As we did some research after realizing the limitation of RealSense L515 at the very late stage of development, ideally, we would instead need to use a camera that can handle strong sunlight, specifically RealSense 400 Series stereo depth cameras, which actually work excellently in both indoor and outdoor sunlight [14].
 
 A stronger motor and lighter power management would be greatly beneficial to operate this robot as well. For the Android App, we would include multiple days that can be displayed and the information would be saved into the arduino where the internal clock would be running to keep track of the exact time and hold all the times that needs to be active. 
 
@@ -215,3 +215,21 @@ Finally, a thermal camera would be beneficial for double confirming if the predi
 [4] “Release Notes for MIT App Inventor 2.” Release Notes for MIT App Inventor 2, MIT App Inventor, http://appinventor.mit.edu/ai2/ReleaseNotes 
 
 [5] “Object Detection with yolov5 and Pytorch.” Section, https://www.section.io/engineering-education/object-detection-with-yolov5-and-pytorch/ 
+
+[6] “Los Angeles, CA, USA - Sunrise, Sunset, and Moon Times for Today.” Sun & Moon Times Today, Los Angeles, California, USA, https://www.timeanddate.com/astronomy/usa/los-angeles 
+
+[7] Datasith. “Raspberry Pi 4 and Intel Realsense D435 · Datasith/ai_demos_rpi Wiki.” GitHub, https://github.com/datasith/Ai_Demos_RPi/wiki/Raspberry-Pi-4-and-Intel-RealSense-D435. 
+
+[8] Ferraro, Kathleen. “How Gardening Became a Wellness Practice among Millennials.” Bustle, Bustle, 21 June 2021, https://www.bustle.com/wellness/gardening-wellness-trend-millennial-self-care-benefits. 
+
+[9] Helscream. “Helscream/HMC5883L_HEADER_ARDUINO_AUTO_CALIBRATION: HMC5883L on Arduino with Auto Calibration Capability.” GitHub, https://github.com/helscream/HMC5883L_Header_Arduino_Auto_calibration. 
+
+[10] Killnice. “Killnice/Yolov5-D435I: Using Yolov5 and Realsense d435i.” GitHub, https://github.com/killnice/yolov5-D435i. 
+
+[11] Politiek, Rients. “Install Pytorch on Raspberry Pi 4 - Q-Engineering.” Q, Q-Engineering, 5 Dec. 2022, https://qengineering.eu/install-pytorch-on-raspberry-pi-4.html. 
+
+[12] “Raspberry Pi 4 yolov5 Object Detection | Yolov5 Raspberry PI4 | Yolov5 Object Detection.” YouTube, YouTube, 30 Sept. 2022, https://www.youtube.com/watch?v=cCnrnt86Rak. 
+
+[13] Syoyo. “Syoyo/TBB-AARCH64: Intel TBB with CMake Build System.” GitHub, https://github.com/syoyo/tbb-aarch64.
+
+[14] D435i Sunlight – Intel Realsense Help Center. https://support.intelrealsense.com/hc/en-us/community/posts/441584740883-D435i-sunlight. 
