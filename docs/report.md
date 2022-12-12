@@ -114,13 +114,18 @@ The Bluetooth app for the android phone is written by the MIT app inventor devel
 
 ## Sunlight Trajectory Prediction function
 The sunlight trajectory prediction is to predict the angle of the sunlight movement based on the initial position. The sunlight trajectory prediction must be at the spot that the Sunlight Spot prediction made. The robot would start moving back and forth for a specific distance calculated from the absolute distance from the robot. The robot will constantly check for the UV light. Once the UV is detected the angle measured from the compass would be stored into an array element in the Arduino. Once a 30 minute cycle has passed, it would use the angle that the compass measured and move forward to see if the UV light is present on the spot. If the robot does not find UV light it would restart to the original start degree from the sunlight spot prediction. Once it is able to find the new spot it would store the new degree as an additional array element. The array would add all the degrees together and get the average degree and use the degree for the next cycle.
-
-![avatar](media/Prediction_Image.png)
-![avatar](media/Connectivity.png)
+<p align="center">
+  <img src="media/Prediction_Image.png" width="450" />
+</p>
+<p align="center">
+  <img src="media/Connectivity.png" width="450" />
+</p>
 
 ## Bot Design:
+<p align="center">
+  <img src="media/Sunseeker_Image.png" width="450" />
+</p>
 
-![avatar](media/Sunseeker_Image.png)
 # 4. Evaluation and Results
 
 # 5. Discussion and Conclusions
