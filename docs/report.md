@@ -48,7 +48,7 @@ Hardware resources:
 
 Software resources:
 -	Arduino IDE
--	MIT App inventor
+-	MIT App inventor [* 4]
 -	Librealsense
 -	PyTorch
 -	OpenCV
