@@ -23,7 +23,7 @@ After indoor time increases, people’s love for houseplants has blossomed, and 
 
 * **Potential Impact:** Sunseeker offers a choice that owners can have their beloved houseplants self care when they need to. With the increase in indoor gardening over the past few years due to COVID-19 and the returning of on-site working environment for most people in the current climate, we believe our new approach of taking care of houseplants will make the owners' lives more convenient and optimize the growing condition for houseplants. In other words, they can now independently provide themselves with an ideal growth condition.
 
-* **Challenges:** A challenge is to minimize the latency of communication between our edge devices and the robot. Since we have multiple subroutines, there exists a risk of too large latency in our avoidance feature as well as sunlight search functionality, leading to insufficient response in real time when obstacles appear and missing identifying a window when it actually sees one. Another potential challenge could be the communication between Arduino UNO and the Android App as messages transmitted between the two might be misinterpreted and cause time frame input from the user to fail to activate the robot’s modules.
+* **Challenges:** A challenge is to minimize the latency of communication between our edge devices and the robot. Since we have multiple subroutines, there exists a risk of too large latency in our avoidance feature as well as sunlight search functionality, leading to insufficient response in real time when obstacles appear and missing identifying a window when it actually sees one. Another potential challenge could be the communication between Arduino Uno and the Android App as messages transmitted between the two might be misinterpreted and cause time frame input from the user to fail to activate the robot’s modules.
 
 * **Requirements for Success:** What skills and resources are necessary to perform the project? We needed one Raspberry Pi for serving as the brain of the robot that ran object detection and distance measurement. One Arduino Uno controlled the mobility of the robot as well as collected the sensor data from UV detection and compass direction measurement. Another Arduino Uno acted as the Bluetooth module that received string input from users that communicated with the robot. Yolov5, a one-stage CNN object detection and classifier, is required to perform window detection.
 
@@ -111,23 +111,17 @@ Software resources:
 
 ## Bluetooth Module
 The Bluetooth app for the android phone is written by the MIT app inventor developer. The App inventor uses a scratch program. The MIT app inventor has a builtin bluetooth client that would allow to send a message. In this project, we would be using a String message to send a message to the bluetooth device on the robot. The robot uses the arduino HC-06 module to receive the String message. The String message includes the time the message is sent, the start time for the robot, and the time duration for the robot to run all the subroutines. The time the message sent would tell the arduino what the current time is and that is the start time of the arduino count down. The start time for the robot is the time when the rest of the robot needs to activate all the other modules like the Camera, UV sensor, and Compass. The other modules are activated using GPIO input from one arduino with the bluetooth to the other arduino connected to the rest of the other modules since the first arduino is occupied with the RX and TX for the bluetooth and the Camera’s Raspberry pi uses the RX and TX for communication [3]. Once the internal timer counts up to the end time, which is the duration time added to the start time, the robot will stop running all the other modules. All the inputs are shown in the figure below.
-
+<p align="center">
+  <img src="media/Bluetooth App Screen.jpg" width="200" />
+</p>
 ## Sunlight Trajectory Prediction function
 The sunlight trajectory prediction is to predict the angle of the sunlight movement based on the initial position. The sunlight trajectory prediction must be at the spot that the Sunlight Spot prediction made. The robot would start moving back and forth for a specific distance calculated from the absolute distance from the robot. The robot will constantly check for the UV light. Once the UV is detected the angle measured from the compass would be stored into an array element in the Arduino. Once a 30 minute cycle has passed, it would use the angle that the compass measured and move forward to see if the UV light is present on the spot. If the robot does not find UV light it would restart to the original start degree from the sunlight spot prediction. Once it is able to find the new spot it would store the new degree as an additional array element. The array would add all the degrees together and get the average degree and use the degree for the next cycle.
 <p align="center">
-  <img src="media/comms_uv_compass.png" width="450" />
+  <img src="media/Prediction_Image.png" width="450" />
 </p>
 <p align="center">
-  Figure 6: Communication between the UV sensor and Compass to the robot 
+  <img src="media/Connectivity.png" width="450" />
 </p>
-
-<p align="center">
-  <img src="media/three_modules_combined.png" width="450" />
-</p>
-<p align="center">
-  Figure 7: Three approaches combined together 
-</p>
-
 
 ## Bot Design:
 <p align="center">
@@ -144,7 +138,7 @@ Although the full robot was not fully functional, we were able to show some of t
   Click thumbnail above to see demo
 </p>
 
-Before predicting the sunlight spot in the room, the Sunseeker needs to be capable of recognizing a window and how far it is. In this demo video, we start with the robot not detecting anything yet in its current position, and hence even though Arduino UNO is trying to request window data, nothing is transmitted through the Serial. Once the robot turns to the right side where a window locates right upfront, it is shown that the Sunseeker immediately picks up the window and marks the distance on the streaming window on our Raspberry Pi. In the terminal window, we can also observe that the distance of the window and its absolute distance are both sent through to Arduino UNO for the trigonometry calculation discussed previously in our technical approach section. 
+Before predicting the sunlight spot in the room, the Sunseeker needs to be capable of recognizing a window and how far it is. In this demo video, we start with the robot not detecting anything yet in its current position, and hence even though Arduino Uno is trying to request window data, nothing is transmitted through the Serial. Once the robot turns to the right side where a window locates right upfront, it is shown that the Sunseeker immediately picks up the window and marks the distance on the streaming window on our Raspberry Pi. In the terminal window, we can also observe that the distance of the window and its absolute distance are both sent through to Arduino Uno for the trigonometry calculation discussed previously in our technical approach section. 
 
 
 
