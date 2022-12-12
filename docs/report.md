@@ -56,14 +56,14 @@ Software resources:
 * **Window detection:** In order to locate where the sunlight lands on the floor in the room, we need to know where the sun is coming from and hence a search of windows in the robot’s surroundings would be of paramount importance in the first step of sunlight spot prediction. Utilizing Yolov5, You Only Look Once, a single-stage object detection algorithm that provides high inference speeds (see figure 1), our Sunseeker was now equipped with computer vision but without the classification of ‘windows’. A sequence of training our own dataset was consequently deployed. As the result turned out, however, our trained model with only window data could sometimes end with misjudgment of anything in the shape of square or rectangle. Merging the pre-existing model with our trained window model showed the best result of all, especially using largest model of the YOLOv5 family, YOLOv5l, with 46.5 million parameters, did the fused model show the best identification result as now even small object detection was feasible and that could distinguish windows to stand out from any other objects in the robot’s vision (see figure 2).
 
 <p align="center">
-  <img src="media/object_id.png" width="600" />
+  <img src="media/object_id.png" width="450" />
 </p>
 <p align="center">
   Figure1: Yolov5 identifies objects with high accuracy (number represents confidence)
 </p>
 
 <p align="center">
-  <img src="media/win_model_train.png" width="750" />
+  <img src="media/win_model_train.png" width="550" />
 </p>
 <p align="center">
   Figure 2: Custom train detection model with Yolov5
@@ -72,7 +72,7 @@ Software resources:
 * **Distance Measurement:** Now that our Sunseeker had window identification, what was missing here was the distance between the robot and the window so that we could further predict where the sunlight would land. This was when Intel RealSense L515 came in. RealSense L515 is a LiDAR depth camera that emits a laser and has it bounce back to measure the distance from whatever the vision of the camera is at the moment. It has a consistent high accuracy of 0.25 to 9 meters in range, which provides sufficient range for what the Sunseeker would generally need for indoor measurements. 
 
 <p align="center">
-  <img src="media/realsense-view_ex.png" width="600" />
+  <img src="media/realsense-view_ex.png" width="450" />
 </p>
 <p align="center">
   Figure 3: RealSense Viewer showing depth in meters, different gradient of colors indicates different distances
@@ -81,7 +81,7 @@ Software resources:
 * **Combine Object Detection and Distance Measurement:** With both the object identification and distance measurement in place, objects in the robot’s vision would be boxed and detected; at the same time, the coordinates of the four corners of the object would be marked to measure the depth from RealSense to that of the center. In figure 4, it is clearly shown that objects on the desk are detected with the correct identification with precise distance measurements, even the toilet further away in the background is as well recognized and measured in distance. A serial communication between the Raspberry Pi and Arduino is essential to receive window requests and transmit the processed distance from and to one another. Two outputs would be transmitted for our final step of determining the location of the sun, which will be explained in details in the next section: first, the distance from the RealSense depth camera to the center of the window, and second, the absolute distance from the camera to the window. 
 
 <p align="center">
-  <img src="media/object_id&dist.png" width="600" />
+  <img src="media/object_id&dist.png" width="450" />
 </p>
 <p align="center">
   Figure 4: Yolov5 combined with RealSense outputting identified objects with distance respectively 
