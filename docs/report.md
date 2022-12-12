@@ -48,7 +48,7 @@ Hardware resources:
 
 Software resources:
 -	Arduino IDE
--	MIT App inventor[4]
+-	MIT App inventor
 -	Librealsense
 -	PyTorch
 -	OpenCV
@@ -111,7 +111,7 @@ Software resources:
 
 
 ## Bluetooth Module
-The Bluetooth app for the android phone is written by the MIT app inventor developer. The App inventor uses a scratch program. The MIT app inventor has a builtin bluetooth client that would allow to send a message. [4] In this project, we would be using a String message to send a message to the bluetooth device on the robot. The robot uses the arduino HC-06 module to receive the String message. The String message includes the time the message is sent, the start time for the robot, and the time duration for the robot to run all the subroutines. The time the message sent would tell the arduino what the current time is and that is the start time of the arduino count down. The start time for the robot is the time when the rest of the robot needs to activate all the other modules like the Camera, UV sensor, and Compass. The other modules are activated using GPIO input from one arduino with the bluetooth to the other arduino connected to the rest of the other modules since the first arduino is occupied with the RX and TX for the bluetooth and the Camera’s Raspberry Pi uses the RX and TX for communication [3]. Once the internal timer counts up to the end time, which is the duration time added to the start time, the robot will stop running all the other modules. All the inputs are shown in the figure below.
+The Bluetooth app for the android phone is written by the MIT app inventor developer. The App inventor uses a scratch program. The MIT app inventor has a builtin bluetooth client that would allow to send a message. [4] In this project, we would be using a String message to send a message to the bluetooth device on the robot. The robot uses the arduino HC-06 module to receive the String message. [1] The String message includes the time the message is sent, the start time for the robot, and the time duration for the robot to run all the subroutines. The time the message sent would tell the arduino what the current time is and that is the start time of the arduino count down. The start time for the robot is the time when the rest of the robot needs to activate all the other modules like the Camera, UV sensor, and Compass. The other modules are activated using GPIO input from one arduino with the bluetooth to the other arduino connected to the rest of the other modules since the first arduino is occupied with the RX and TX for the bluetooth and the Camera’s Raspberry Pi uses the RX and TX for communication [3]. Once the internal timer counts up to the end time, which is the duration time added to the start time, the robot will stop running all the other modules. All the inputs are shown in the figure below.
 <p align="center">
   <img src="media/Bluetooth App Screen.jpg" width="200" />
 </p>
@@ -206,7 +206,7 @@ Finally, a thermal camera would be beneficial for double confirming if the predi
 
 
 # 6. References
-[1] Person. “How Do You Display Current Time through a Label?” MIT App Inventor Community, 30 Apr. 2021, https://community.appinventor.mit.edu/t/how-do-you-display-current-time-through-a-label/32156 
+[1] Juan_Antonio. “Bluetooth HC-06. Arduino. Send. Receive. Send Text File. Multitouch. Image.” MIT App Inventor Community, 22 May 2020, https://community.appinventor.mit.edu/t/bluetooth-hc-06-arduino-send-receive-send-text-file-multitouch-image/9518/2  
 
 [2] “AIRCCSE - International Publisher Computer Science, Technology,Engineering.” Airccse.org, https://www.airccse.org/ 
 
