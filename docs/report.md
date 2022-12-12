@@ -1,4 +1,4 @@
-**Disclaimer:** The project is not fully functional. The camera does not work with the rest of the robot because the L515 does not work in a strong amount of sunlight and the prediction of the sunlight trajectory prediction function is not working.
+**Disclaimer:** The project is not fully functional. The depth camera does not work with the rest of the robot as intended because the RealSense L515 does not work in a strong amount of sunlight and hence the sunlight spot prediction function would not work when tested in a real scenario, a well-lit room with windows.
 
 # Table of Contents
 * Abstract
