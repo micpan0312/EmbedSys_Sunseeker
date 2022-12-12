@@ -34,7 +34,7 @@ After indoor time increases, people’s love for houseplants has blossomed, and 
 
 # 2. Related Work
 
-Human Following of Mobile Robot: In this Article, the robot uses computer vision and a constant loop of image searching for the subject. In our work, we would like to loop searching for the window and move to the distance where the sunlight would be. The robot loop would include the camera sensor, which also checks the frame per second when the object is detected. The algorithm pattern and computer vision is what we used for our project.
+**Human Following of Mobile Robot: [15]** In this Article, the robot uses computer vision and a constant loop of image searching for the subject. In our work, we would like to loop searching for the window and move to the distance where the sunlight would be. The robot loop would include the camera sensor, which also checks the frame per second when the object is detected. The algorithm pattern and computer vision is what we used for our project.
 
 # 3. Technical Approach
 
@@ -235,3 +235,5 @@ Finally, a thermal camera would be beneficial for double confirming if the predi
 [13] Syoyo. “Syoyo/TBB-AARCH64: Intel TBB with CMake Build System.” GitHub, https://github.com/syoyo/tbb-aarch64.
 
 [14] D435i Sunlight – Intel Realsense Help Center. https://support.intelrealsense.com/hc/en-us/community/posts/441584740883-D435i-sunlight. 
+
+[15] Algabri, Redhwan, and Mun-Taek Choi. “Deep-Learning-Based Indoor Human Following of Mobile Robot Using Color Feature.” Sensors (Basel, Switzerland), U.S. National Library of Medicine, 9 May 2020, https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7273221/.
