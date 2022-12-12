@@ -29,7 +29,7 @@ In order to succeed, we would need the camera discussed above to be able to iden
 
 ## 8. Execution Plan
 
-Describe the key tasks in executing your project, and in case of team project describe how will you partition the tasks.
+We will be downloading, installing and setting up the development environment for hardwares for the first week or two. The sensor's calibration and camera functionality should be tested afterwards for general purposes. We should begin implementing specific tests, including object detection and distance measurement on desired objects by week 7-8. And finally, we will assemble each individual part and integrate both hardware and software to make sure it works as expected.
 
 ## 9. Related Work
 
@@ -39,11 +39,11 @@ List the key papers that you have identified relating to your project idea, and 
 
 ### 9.b. Datasets
 
-List datasets that you have identified and plan to use. Provide references (with full citation in the References section below).
+We are looking into fetching window data as we will be needing to train a model if we cannot find any existing models that can identify a window. Hence, a large dataset of windows should be needed.
 
 ### 9.c. Software
 
-List softwate that you have identified and plan to use. Provide references (with full citation in the References section below).
+We will be installing Raspberry Pi OS, UBUNTU, or UBUNTU Mate onto our Raspberry Pi and hope that there would not exist any installation issues. An existing algorithm that can identify objects would be preferable. OpenCV might be required as well since we will need to do some computer vision processing. 
 
 ## 10. References
 
