@@ -114,27 +114,35 @@ The Bluetooth app for the android phone is written by the MIT app inventor devel
 <p align="center">
   <img src="media/Bluetooth App Screen.jpg" width="200" />
 </p>
+<p align="center">
+  Figure 6: input UI on Android phone for the bluetooth communication with Arduino Uno
+</p>
+
+
+
 ## Sunlight Trajectory Prediction function
 The sunlight trajectory prediction is to predict the angle of the sunlight movement based on the initial position. The sunlight trajectory prediction must be at the spot that the Sunlight Spot prediction made. The robot would start moving back and forth for a specific distance calculated from the absolute distance from the robot. The robot will constantly check for the UV light. Once the UV is detected the angle measured from the compass would be stored into an array element in the Arduino. Once a 30 minute cycle has passed, it would use the angle that the compass measured and move forward to see if the UV light is present on the spot. If the robot does not find UV light it would restart to the original start degree from the sunlight spot prediction. Once it is able to find the new spot it would store the new degree as an additional array element. The array would add all the degrees together and get the average degree and use the degree for the next cycle.
 <p align="center">
   <img src="media/comms_uv_compass.png" width="450" />
 </p>
 <p align="center">
-  Figure 6: Communication between the UV sensor and Compass to the robot 
+  Figure 7: Communication between the UV sensor and Compass to the robot 
 </p>
 
 <p align="center">
   <img src="media/three_modules_combined.png" width="450" />
 </p>
 <p align="center">
-  Figure 7: Three approaches combined together 
+  Figure 8: Three approaches combined together 
 </p>
 
 
 ## Bot Design:
 The top box is 7 cm by 19.5 cm by 22.5 cm. The bottom pillars below the box are 7.5 cm tall. The camera is set in the front with the batteries and Raspberry Pi. The back where the breadboard with the UV light sensor and compass and bluetooth are aligned with the plant as shown in the figure below.
 <p align="center">
+  <img src="media/_com.apple.Pasteboard.8FNgoM.png" width="450" />
   <img src="media/Sunseeker_Image.png" width="450" />
+  <img src="media/sunseeker_top_side_view.png" width="450" />
 </p>
 
 # 4. Evaluation and Results
