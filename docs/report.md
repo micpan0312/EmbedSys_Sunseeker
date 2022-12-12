@@ -130,18 +130,30 @@ The sunlight trajectory prediction is to predict the angle of the sunlight movem
 
 Although the full robot was not fully functional, we were able to show some of the functions working with the measurements for the robot for future work purposes. 
 ## Window Identification and Distance Measurement
-https://youtu.be/_z0maoXT3IM
+<!-- https://youtu.be/_z0maoXT3IM -->
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/_z0maoXT3IM/0.jpg)](http://www.youtube.com/watch?v=_z0maoXT3IM "Video Title")
+<p align="left">
+  Click thumbnail above to see demo
+</p>
+
 Before predicting the sunlight spot in the room, the Sunseeker needs to be capable of recognizing a window and how far it is. In this demo video, we start with the robot not detecting anything yet in its current position, and hence even though Arduino UNO is trying to request window data, nothing is transmitted through the Serial. Once the robot turns to the right side where a window locates right upfront, it is shown that the Sunseeker immediately picks up the window and marks the distance on the streaming window on our Raspberry Pi. In the terminal window, we can also observe that the distance of the window and its absolute distance are both sent through to Arduino UNO for the trigonometry calculation discussed previously in our technical approach section. 
 
 
 
 ## UV Check
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8Td4io36GF0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/8Td4io36GF0/0.jpg)](http://www.youtube.com/watch?v=8Td4io36GF0 "Video Title")
+<p align="left">
+  Click thumbnail above to see demo
+</p>
 
 As seen in this demo video, Sunseeker has already started and is now working within the time frame inputted from the user. What is being tested here is whether or not the robot would be able to stop once UV light is detected, even though it is still operating under instruction of the user. The UV level is usually tested 0.00 when indoors without any sunlight, so any spike in UV number would be considered UV. However, this demo was conducted outdoors due to our room limitation. Since UV could be scattered or diffused even in the shadow outdoors, for testing and demonstration purposes, we raised the UV threshold up to 0.21. As shown in the end of the video, once the UV level reaches 0.21, the Sunseeker comes to a stop while the indication green LED remains turned on.
 
 ## Bluetooth Input Time Frame from User
-https://youtu.be/neMEp_88_QI
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/neMEp_88_QI/0.jpg)](http://www.youtube.com/watch?v=neMEp_88_QI "Video Title")
+<p align="left">
+  Click thumbnail above to see demo
+</p>
+
 In this video, Bluetooth communication between the user’s Android App and the Sunseeker is being conducted. As shown, we first select the desired Bluetooth connection in the App, choosing HC-06 in this case, which is the Bluetooth module we have on the robot. Next, the starting date and time can be inputted with a few clicks as well as the end time. In this demo, the current time is set to be 01:30 pm, and starting and end time are 01:31 pm and 01:32 pm respectively. We can see that the green LED in the back turns on and the robot immediately starts the window search process once the time hits 01:31 pm. After a minute of search the Sunseeker comes to a stop when the clock hits 01:32 pm and the LED turns off.
 
 
