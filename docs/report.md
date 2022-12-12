@@ -206,3 +206,12 @@ Finally, a thermal camera would be beneficial for double confirming if the predi
 
 
 # 6. References
+[1] Person. “How Do You Display Current Time through a Label?” MIT App Inventor Community, 30 Apr. 2021, https://community.appinventor.mit.edu/t/how-do-you-display-current-time-through-a-label/32156 
+
+[2] “AIRCCSE - International Publisher Computer Science, Technology,Engineering.” Airccse.org, https://www.airccse.org/ 
+
+[3] Ed. “Raspberry Pi Arduino Serial Communication - Everything You Need to Know - the Robotics Back.” End, 15 Nov. 2021, https://roboticsbackend.com/raspberry-pi-arduino-serial-communication/ 
+
+[4] “Release Notes for MIT App Inventor 2.” Release Notes for MIT App Inventor 2, MIT App Inventor, http://appinventor.mit.edu/ai2/ReleaseNotes 
+
+[5] “Object Detection with yolov5 and Pytorch.” Section, https://www.section.io/engineering-education/object-detection-with-yolov5-and-pytorch/ 
