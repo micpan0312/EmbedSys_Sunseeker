@@ -51,6 +51,7 @@ Software resources:
 -	MIT App inventor
 -	Librealsense
 -	PyTorch
+-	OpenCV
 -	Raspberry Pi
 -	Yolov5
 
