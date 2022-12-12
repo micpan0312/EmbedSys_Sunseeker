@@ -97,23 +97,27 @@ Software resources:
 * **Distance Data Processed and Sunlight location Predicted:** Details in calculation and prediction of where the sun would land on the floor are illustrated in details in figure 5. After windows are identified and their respective distances measured, the Sunseeker is just one step away from getting to the sunlight spot: the relative angle of the location and the relative distance from the bot to the spot. Before getting started, clarification of what are known is listed in table 1 below. For simplicity, discussion over calculation and trigonometry would be omitted here; instead, they are shown directly in table 2 below as of how the derivation of the final destination distance d7 and relative rotation angle of the robot 𝜽6. After prediction, now the Sunseeker just needs to rotate 𝜽6 degrees and go straight forward by d7 meters and the sunlight spot search would be complete.
 
 <p align="center">
-  <img src="media/sunlight_search_diag.jpeg" width="600" />
+  <img src="media/sunlight_search_diag_update.jpeg" width="600" />
 </p>
 <p align="center">
   Figure 5: Details on the derivation of the sunlight location [6]
 </p>
 
 <p align="center">
-  <img src="media/known_var.png" width="530" height="334"/>
-  <img src="media/unknown_var.png" height="330"  />
+<!--   <img src="media/known_var.png" width="530" height="334"/> -->
+  <img src="media/known_var.png" />
 </p>
 <p align="center">
   Table 1: A list of the known variables before sunlight prediction 
-  
-  
-  Table 2: A list of the unknown and the solving approach 
 </p>
 
+<p align="center">
+<!--   <img src="media/unknown_var.png" height="330"  /> -->
+  <img src="media/unknown_var.png" />
+</p>
+<p align="center">
+  Table 2: A list of the unknown and the solving approach 
+</p>
 
 ## Bluetooth Module
 The Bluetooth app for the android phone is written by the MIT app inventor developer. The App inventor uses a scratch program. The MIT app inventor has a builtin bluetooth client that would allow to send a message. [4] In this project, we would be using a String message to send a message to the bluetooth device on the robot. The robot uses the arduino HC-06 module to receive the String message. [1] The String message includes the time the message is sent, the start time for the robot, and the time duration for the robot to run all the subroutines. The time the message sent would tell the arduino what the current time is and that is the start time of the arduino count down. The start time for the robot is the time when the rest of the robot needs to activate all the other modules like the Camera, UV sensor, and Compass. The other modules are activated using GPIO input from one arduino with the bluetooth to the other arduino connected to the rest of the other modules since the first arduino is occupied with the RX and TX for the bluetooth and the Camera’s Raspberry Pi uses the RX and TX for communication [3]. Once the internal timer counts up to the end time, which is the duration time added to the start time, the robot will stop running all the other modules. All the inputs are shown in the figure below.
