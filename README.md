@@ -1,5 +1,5 @@
 # ecem202a_project: Sunseeker
-**A Self-care Bot for Houseplant**
+Click [**here**](https://micpan0312.github.io/EmbedSys_Sunseeker/) for website
 
 ## Team
 * Michael Pan
@@ -10,6 +10,6 @@
 * software/ for code used in your project
 * data/ for data used in your project
 
-Click [**here**](https://micpan0312.github.io/EmbedSys_Sunseeker/) for website
+
 
 
