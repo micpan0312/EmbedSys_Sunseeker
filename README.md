@@ -1,4 +1,4 @@
-# ecem202a_project: Sunseeker – A Self-care Bot for Houseplant
+# Sunseeker – A Self-care Bot for Houseplant
 [Click here for website](https://micpan0312.github.io/EmbedSys_Sunseeker/)
 
 ## Team
